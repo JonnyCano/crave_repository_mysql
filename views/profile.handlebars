@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="shortcut icon" type="image/png" href="./assets/images/canocan_3000.png" />
+</head>
+<body>
+    <h1>Profile</h1>
+    <br>
+    {{!-- for referwnce: --}}
+<h1 class="text-center mb-3">{{title}}</h1>
+<form action="/api/members" method="POST" class="mb-4">
+<div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" name="name" class="form-control">
+</div>
+<div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" name="email" class="form-control">
+</div>
+<input style="margin-top: 3vh;" type="submit" value="Add Member" class="btn btn-primary btn-block">
+</form>
+<h4>Members</h4>
+<ul class="list-group">
+    {{#each members}}
+        <li class="list-group-item">{{this.name}}: {{this.email}}</li>
+    {{/each}}
+</ul>
+
+<a href="/api/members" class="btn btn-light mt-4">Visit API</a>
+</body>
+</html>
