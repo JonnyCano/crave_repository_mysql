@@ -18,6 +18,7 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 //setting the view engine
 app.set('view engine', 'handlebars');
 
+
 // Body Parser Middleware
 app.use(express.json());
 // handle url encoding data
@@ -26,10 +27,17 @@ app.use(express.urlencoded({ extended: false }));
 // connect to the database
 
 // Homepage Route:
-app.get('/', (req, res) => res.render('index', {
+app.get('/', (req, res) => {
+    res.render('index')
     title: 'Animal Companion App',
     members
-}));
+});
+
+// abput
+
+app.get('/about', (req, res) => {
+    res.render('about')
+});
 
 // route to the users pet profile
 
@@ -40,6 +48,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 // members api routes
 app.use('/api/members', require('./routes/api/members'));
 
-const PORT = process.env.PORT || 3001;
+const PORT = 3001
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
