@@ -39,6 +39,14 @@ app.get('/about', (req, res) => {
     res.render('about')
 });
 
+app.get('singup.handlebars', (req, res) => {
+    res.render('signup')
+});
+
+app.get('/service', (req, res) => {
+    res.render('service')
+});
+
 // route to the users pet profile
 
 // Set static folder
