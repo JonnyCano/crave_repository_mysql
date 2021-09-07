@@ -14,7 +14,7 @@ const app = express();
 
 // Handlebars Middleware:
 //set theview engine to handlebars pass in the exphbs
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.engine('handlebars', exphbs({ defaultLayout: 'main'}));
 //setting the view engine
 app.set('view engine', 'handlebars');
 
@@ -28,25 +28,40 @@ app.use(express.urlencoded({ extended: false }));
 
 // Homepage Route:
 app.get('/', (req, res) => {
-    res.render('index')
-    title: 'Animal Companion App',
-    members
+    res.render('index', {
+        title: 'Home Page'});
+    
 });
 
-// abput
+// different tabs
 
 app.get('/about', (req, res) => {
-    res.render('about')
+    res.render('about', {
+        title: 'About'});
+    
 });
 
-app.get('singup.handlebars', (req, res) => {
-    res.render('signup')
+app.get('/signup', (req, res) => {
+    res.render('signup', {
+        title: 'Signup'});
+    
 });
 
 app.get('/service', (req, res) => {
-    res.render('service')
+    res.render('service', {
+        title: 'Services'});
+    
 });
 
+app.get('/member', (req, res) => {
+    res.render('member', {
+        title: 'member page'});
+    
+});
+app.get('/products', (req, res) => {
+    res.render('products', {
+        title: 'products'});
+    });
 // route to the users pet profile
 
 // Set static folder
