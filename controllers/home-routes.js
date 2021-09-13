@@ -3,17 +3,21 @@ const { Owner } = require('../models');
 const router = require('express').Router();
 // Homepage Route:
 router.get('/', (req, res) => {
-  Owner.findOne({
-    where: {
-      id: req.query.id
-    }
-  })
-  .then(owner => {
-    res.render('homepage', {
-      fname: owner.fname.toString()
+  if (!req.query.email) {
+    res.render('index', { layout: 'landing'})
+  } else {
+    Owner.findOne({
+      where: {
+        email: req.query.email
+      }
     })
-  })
-  });
+    .then(owner => {
+      res.render('homepage', {
+        fname: owner.fname.toString()
+      })
+    })
+  }
+});
 
 router.get('/register', (req, res) => {
   res.render('register');
